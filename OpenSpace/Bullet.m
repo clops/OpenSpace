@@ -14,7 +14,7 @@
 //
 
 #import "Bullet.h"
-
+#import "SimpleAudioEngine.h"
 
 @interface Bullet (PrivateMethods)
 -(id) initWithBulletImage;
@@ -49,6 +49,10 @@ static CGRect screenRect; //stored as a static variable for performance reasons
 -(void) shootBulletAt:(CGPoint)startPosition velocity:(CGPoint)vel rotation:(float)rotation frameName:(NSString*)frameName {
     CCLOG(@"Shooting from: %f, %f at: %f, %f", startPosition.x, startPosition.y, vel.x, vel.y);
     
+    //sound effect!!!
+    [[SimpleAudioEngine sharedEngine] playEffect:@"laser.mp3"];
+    
+    //and now the rest
 	self.velocity = vel;
 	self.position = startPosition;
 	self.visible = YES;

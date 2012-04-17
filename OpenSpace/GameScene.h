@@ -12,8 +12,8 @@
 #import "GameControlsLayer.h"
 
 typedef enum {
-    GameSceneLayerTagGame,
-    GameSceneLayerTagInput, 
+    GameSceneLayerTagGame = 10,
+    GameSceneLayerTagInput = 100, 
 } GameSceneLayerTags;
 
 typedef enum {

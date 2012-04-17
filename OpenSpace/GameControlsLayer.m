@@ -8,6 +8,7 @@
 
 #import "GameControlsLayer.h"
 #import "GameScene.h"
+#import "SimpleAudioEngine.h"
 
 @implementation GameControlsLayer
 @synthesize mainSpaceShip;
@@ -69,7 +70,7 @@
     
     if(fireButtonMain.active){
         CCLOG(@"Attack button is pressed.");
-        [mainSpaceShipBulletCache shootBulletAt:[mainSpaceShip position] velocity:[mainSpaceShip shootingDirection] rotation:[mainSpaceShip rotation] frameName:@"bullet.png"];
+        [mainSpaceShipBulletCache shootBulletAt:[mainSpaceShip position] velocity:[mainSpaceShip shootingDirection] rotation:[mainSpaceShip rotation] frameName:@"bullet.png"];        
     }
 }
 

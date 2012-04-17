@@ -14,8 +14,16 @@
 @interface GameplayLayer : CCLayer {
     SpaceShip *mainSpaceShip;
     BulletCache *mainSpaceShipBulletCache;
+    
+    SpaceShip *enemySpaceShip;
     //BulletCache *bulletCache;
+    
+    CGPoint halfScreenSize;
+    CGPoint fullScreenSize;
 }
+
+-(void) zoomTo:(float)zoom;
+-(void) prepareLayerZoomBetweenSpaceship;
 
 @property(nonatomic, assign) SpaceShip *mainSpaceShip;
 @property(readonly, nonatomic) BulletCache* mainSpaceShipBulletCache;

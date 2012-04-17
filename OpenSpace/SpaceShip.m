@@ -8,7 +8,6 @@
 
 #import "SpaceShip.h"
 
-
 @implementation SpaceShip
 
 // Static autorelease initializer, mimics cocos2d's memory allocation scheme. 
@@ -17,29 +16,35 @@
 }
 
 
+static CGRect screenRect; //stored as a static variable for performance reasons
 
-// Creating an instance (from the static initializer)
--(id) initWithParentNode:(CCNode*)parentNode {
+
+
+-(id) initWithParentNode:(CCNode *)parentNode {
     CCLOG(@"Creating main Space Ship SELCTOR %@: %@", NSStringFromSelector(_cmd), self);
     
     if ((self = [super init])) {
         [parentNode addChild:self z:10 tag:666];
 
-        //init spaceship hull
-        CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        // make sure to initialize the screen rect only once
+		if (CGRectIsEmpty(screenRect)){
+			CGSize screenSize = [[CCDirector sharedDirector] winSize];
+			screenRect = CGRectMake(0, 0, screenSize.width, screenSize.height);
+		}
+
         
         //get the hull bro!
         hull = [CCSprite spriteWithSpriteFrameName:@"ufo-off.png"];        
-        [hull setPosition:CGPointMake(screenSize.width*0.5, screenSize.height*0.5)];
+        //[hull setPosition:CGPointMake(screenRect.size.width*location, screenRect.size.height)];
         [self addChild:hull z:20 tag:666];
-                
+        
         
         //Basic Ship Properties
         rotationVelocity                = 6.0f;
         maximumRotationVelocity         = 3.0f;     //three is rather ok
         rotationVelocityDeterioration   = 0.05f;   
         
-        maximumMovementVelocity         = 2.5f;
+        maximumMovementVelocity         = 3.0f;
         movementVelocityDeterioration   = 0.005f;
         accelerationVelocity            = 0.3f;
         
@@ -88,7 +93,7 @@
         return;
     }
         
-    if(hull.rotation - 22.5f < rotatingToAngle && hull.rotation + 22.5f > rotatingToAngle){
+    if([self rotation] - 22.5f < rotatingToAngle && [self rotation] + 22.5f > rotatingToAngle){
         //CCLOG(@"MOVE");
     }else{
         return;
@@ -139,12 +144,17 @@
 -(void) turnOnAccelerationEngines{
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ufo.png"];
     [hull setDisplayFrame:frame]; 
+    
+    //sound!
+    //[[SimpleAudioEngine sharedEngine] playEffect:@"ufo.mp3"];
 }
 
 -(void) turnOffAccelerationEngines{
     //turn the engines off
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ufo-off.png"];
     [hull setDisplayFrame:frame];    
+    
+    
 }
 /*                                                                                                           */
 /* ------- Acceleration Animation END ---------------------------------------------------------------------- */
@@ -157,7 +167,7 @@
         angle = angle - 360;
     }
     
-    CCLOG(@"Rotating to angle: %f", angle);
+    //CCLOG(@"Rotating to angle: %f", angle);
     
     rotatingToAngle = angle;
 }
@@ -285,7 +295,7 @@
     float adjustedRotationVelocity = rotationVelocity*delta*60;
     
     
-    if([self rotatingToAngle] <= hull.rotation + adjustedRotationVelocity && [self rotatingToAngle] > hull.rotation - adjustedRotationVelocity){
+    if([self rotatingToAngle] <= [self rotation] + adjustedRotationVelocity && [self rotatingToAngle] > [self rotation] - adjustedRotationVelocity){
         [self setIsRotating:NO];
         return;
     }
@@ -294,30 +304,32 @@
     [self setIsRotating:YES];    
     
     //do we have to rotate?
-    if(hull.rotation > [self rotatingToAngle]){
-        if(hull.rotation - 180 > [self rotatingToAngle]){
-            hull.rotation = hull.rotation + adjustedRotationVelocity;
+    float newRotation;
+    if([self rotation] > [self rotatingToAngle]){
+        if([self rotation] - 180 > [self rotatingToAngle]){
+            newRotation = [self rotation] + adjustedRotationVelocity;
             [self setIsRotatingRight:YES];    
         }else{
-            hull.rotation = hull.rotation - adjustedRotationVelocity;
+            newRotation = [self rotation] - adjustedRotationVelocity;
             [self setIsRotatingLeft:YES];    
         }
-    }else if(hull.rotation < [self rotatingToAngle]){
-        if(hull.rotation + 180 < [self rotatingToAngle]){
-            hull.rotation = hull.rotation - adjustedRotationVelocity;            
+    }else if([self rotation] < [self rotatingToAngle]){
+        if([self rotation] + 180 < [self rotatingToAngle]){
+            newRotation = [self rotation] - adjustedRotationVelocity;            
             [self setIsRotatingLeft:YES];    
         }else{
-            hull.rotation = hull.rotation + adjustedRotationVelocity;            
+            newRotation = [self rotation] + adjustedRotationVelocity;            
             [self setIsRotatingRight:YES];    
         }
     }
     
-    if(hull.rotation > 360){
-        hull.rotation = 0;
-    }else if(hull.rotation < 0){
-        hull.rotation = 360;
+    if([self rotation] > 360){
+        newRotation = 0;
+    }else if([self rotation] < 0){
+        newRotation = 360;
     }
     
+    [self setRotation:newRotation];
     //deteriorate
     //rotationVelocity = rotationVelocity - rotationVelocityDeterioration;
 }
@@ -325,25 +337,29 @@
 
 
 -(void) calculateMovement:(ccTime)delta {   
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];    
-    CGPoint newPosition = hull.position;
+    //CGSize screenSize = [[CCDirector sharedDirector] winSize];    
+    CGPoint newPosition = [self position];
     
     newPosition.x = newPosition.x + movementVelocity.x*delta*60;
     newPosition.y = newPosition.y + movementVelocity.y*delta*60;
+    
 
-    if(newPosition.x > screenSize.width){
+    /* TEMPORARY 
+    if(newPosition.x > screenRect.size.width){
         newPosition.x = 0;
     }else if(newPosition.x < 0){
-        newPosition.x = screenSize.width;
+        newPosition.x = screenRect.size.width;
     }
 
-    if(newPosition.y > screenSize.height){
+    if(newPosition.y > screenRect.size.height){
         newPosition.y = 0;
     }else if(newPosition.y < 0){
-        newPosition.y = screenSize.height;
+        newPosition.y = screenRect.size.height;
     }
+    */
 
-    hull.position = newPosition;
+    //hull.position = newPosition;
+    [self setPosition:newPosition];
     
     //deteriorate movement velocity
     if(movementVelocity.x > 0){
@@ -357,23 +373,16 @@
     }else if(movementVelocity.y < 0){
         movementVelocity.y = movementVelocity.y + movementVelocityDeterioration;    
     }
+    
 }
 
-
--(CGPoint) position {
-    return hull.position;
-}
-
--(float) rotation {
-    return hull.rotation;
-}
 
 -(CGPoint) shootingDirection {
     //the math here is simple, 2pi is 360deg
     //and the shooting direction is basically a derivative 
     //of the hull's rotation (unless this is some special weapon, right)
-    float xVector = sin(hull.rotation*0.0174f)*500;
-    float yVector = cos(hull.rotation*0.0174f)*500;
+    float xVector = sin([self rotation]*0.0174f)*500;
+    float yVector = cos([self rotation]*0.0174f)*500;
     
     return CGPointMake(xVector,yVector);
 }

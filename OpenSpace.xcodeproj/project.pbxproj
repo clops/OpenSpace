@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD04100A151205C000D5AF40 /* game-art-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD041006151205C000D5AF40 /* game-art-hd.plist */; };
+		FD04100B151205C000D5AF40 /* game-art-hd.pvr in Resources */ = {isa = PBXBuildFile; fileRef = FD041007151205C000D5AF40 /* game-art-hd.pvr */; };
+		FD04100C151205C000D5AF40 /* game-art.pvr in Resources */ = {isa = PBXBuildFile; fileRef = FD041008151205C000D5AF40 /* game-art.pvr */; };
+		FD04100D151205C000D5AF40 /* game-art-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FD041009151205C000D5AF40 /* game-art-hd.png */; };
 		FD37DD4714E1C86100F2C129 /* parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = FD37DD4614E1C86100F2C129 /* parallax.png */; };
 		FD3AB68F14D5F3D8009577FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3AB68E14D5F3D8009577FB /* QuartzCore.framework */; };
 		FD3AB69114D5F3D8009577FB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3AB69014D5F3D8009577FB /* OpenGLES.framework */; };
@@ -165,14 +169,22 @@
 		FDA0EBD414E1708A00039DF7 /* space1.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA0EBCE14E1708A00039DF7 /* space1.png */; };
 		FDA0EBD514E1708A00039DF7 /* space2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA0EBCF14E1708A00039DF7 /* space2-hd.png */; };
 		FDA0EBD614E1708A00039DF7 /* space1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FDA0EBD014E1708A00039DF7 /* space1-hd.png */; };
+		FDAB32B31512803B00C7D3BD /* laser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FDAB32B21512803B00C7D3BD /* laser.mp3 */; };
+		FDAB32B5151280B600C7D3BD /* ufo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FDAB32B4151280B600C7D3BD /* ufo.mp3 */; };
 		FDB1509614E13CA10062FE3B /* joystickbase-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB1509214E13CA10062FE3B /* joystickbase-hd.png */; };
 		FDB1509714E13CA10062FE3B /* joystickbase.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB1509314E13CA10062FE3B /* joystickbase.png */; };
 		FDB1509814E13CA10062FE3B /* joystickstick-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB1509414E13CA10062FE3B /* joystickstick-hd.png */; };
 		FDB1509914E13CA10062FE3B /* joystickstick.png in Resources */ = {isa = PBXBuildFile; fileRef = FDB1509514E13CA10062FE3B /* joystickstick.png */; };
+		FDD3428B151213FA00997A30 /* buttonUp-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD34289151213FA00997A30 /* buttonUp-hd.png */; };
+		FDD3428C151213FA00997A30 /* buttonDown-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD3428A151213FA00997A30 /* buttonDown-hd.png */; };
 		FDD8C1DF14E0463E0010BAC6 /* SpaceShip.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD8C1DE14E0463E0010BAC6 /* SpaceShip.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD041006151205C000D5AF40 /* game-art-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "game-art-hd.plist"; sourceTree = "<group>"; };
+		FD041007151205C000D5AF40 /* game-art-hd.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "game-art-hd.pvr"; sourceTree = "<group>"; };
+		FD041008151205C000D5AF40 /* game-art.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "game-art.pvr"; sourceTree = "<group>"; };
+		FD041009151205C000D5AF40 /* game-art-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "game-art-hd.png"; sourceTree = "<group>"; };
 		FD37DD4614E1C86100F2C129 /* parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parallax.png; sourceTree = "<group>"; };
 		FD3AB68A14D5F3D8009577FB /* OpenSpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3AB68E14D5F3D8009577FB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -459,10 +471,15 @@
 		FDA0EBCE14E1708A00039DF7 /* space1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space1.png; sourceTree = "<group>"; };
 		FDA0EBCF14E1708A00039DF7 /* space2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "space2-hd.png"; sourceTree = "<group>"; };
 		FDA0EBD014E1708A00039DF7 /* space1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "space1-hd.png"; sourceTree = "<group>"; };
+		FDAB32AB15127A8900C7D3BD /* laser.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = laser.caf; sourceTree = "<group>"; };
+		FDAB32B21512803B00C7D3BD /* laser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laser.mp3; sourceTree = "<group>"; };
+		FDAB32B4151280B600C7D3BD /* ufo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ufo.mp3; sourceTree = "<group>"; };
 		FDB1509214E13CA10062FE3B /* joystickbase-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joystickbase-hd.png"; sourceTree = "<group>"; };
 		FDB1509314E13CA10062FE3B /* joystickbase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickbase.png; sourceTree = "<group>"; };
 		FDB1509414E13CA10062FE3B /* joystickstick-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "joystickstick-hd.png"; sourceTree = "<group>"; };
 		FDB1509514E13CA10062FE3B /* joystickstick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystickstick.png; sourceTree = "<group>"; };
+		FDD34289151213FA00997A30 /* buttonUp-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonUp-hd.png"; sourceTree = "<group>"; };
+		FDD3428A151213FA00997A30 /* buttonDown-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonDown-hd.png"; sourceTree = "<group>"; };
 		FDD8C1DD14E0463E0010BAC6 /* SpaceShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceShip.h; sourceTree = "<group>"; };
 		FDD8C1DE14E0463E0010BAC6 /* SpaceShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceShip.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -490,6 +507,10 @@
 		FD28D78014FD3BD4009DCA23 /* Spaceship */ = {
 			isa = PBXGroup;
 			children = (
+				FD041006151205C000D5AF40 /* game-art-hd.plist */,
+				FD041007151205C000D5AF40 /* game-art-hd.pvr */,
+				FD041008151205C000D5AF40 /* game-art.pvr */,
+				FD041009151205C000D5AF40 /* game-art-hd.png */,
 				FD9B04EE151117BF00B11E2D /* game-art.plist */,
 				FD9B04EF151117BF00B11E2D /* game-art.png */,
 				FD9B04ED1511176400B11E2D /* myGameArt.tps */,
@@ -515,6 +536,8 @@
 		FD37DD4114E1B6BD00F2C129 /* JoystickGraphics */ = {
 			isa = PBXGroup;
 			children = (
+				FDD34289151213FA00997A30 /* buttonUp-hd.png */,
+				FDD3428A151213FA00997A30 /* buttonDown-hd.png */,
 				FDB1509214E13CA10062FE3B /* joystickbase-hd.png */,
 				FDB1509314E13CA10062FE3B /* joystickbase.png */,
 				FDB1509414E13CA10062FE3B /* joystickstick-hd.png */,
@@ -599,6 +622,7 @@
 				FD37DD3F14E1B6AB00F2C129 /* ParallaxBackgrounds */,
 				FD3AB6B414D5F3D8009577FB /* Info.plist */,
 				FD3AB6B514D5F3D8009577FB /* iTunesArtwork */,
+				FDAB32B115127BE600C7D3BD /* Sounds */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1001,6 +1025,16 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		FDAB32B115127BE600C7D3BD /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				FDAB32B4151280B600C7D3BD /* ufo.mp3 */,
+				FDAB32B21512803B00C7D3BD /* laser.mp3 */,
+				FDAB32AB15127A8900C7D3BD /* laser.caf */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1097,6 +1131,14 @@
 				FD9B04E61511148200B11E2D /* ufo.png in Resources */,
 				FD9B04F0151117BF00B11E2D /* game-art.plist in Resources */,
 				FD9B04F1151117BF00B11E2D /* game-art.png in Resources */,
+				FD04100A151205C000D5AF40 /* game-art-hd.plist in Resources */,
+				FD04100B151205C000D5AF40 /* game-art-hd.pvr in Resources */,
+				FD04100C151205C000D5AF40 /* game-art.pvr in Resources */,
+				FD04100D151205C000D5AF40 /* game-art-hd.png in Resources */,
+				FDD3428B151213FA00997A30 /* buttonUp-hd.png in Resources */,
+				FDD3428C151213FA00997A30 /* buttonDown-hd.png in Resources */,
+				FDAB32B31512803B00C7D3BD /* laser.mp3 in Resources */,
+				FDAB32B5151280B600C7D3BD /* ufo.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

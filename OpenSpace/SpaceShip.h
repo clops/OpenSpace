@@ -39,9 +39,7 @@
 -(void) setVelocity:(CGPoint)velocity setRotation:(float)degrees;
 -(void) setMovementVelocity:(CGPoint)velocity;
 
--(CGPoint) position;
 -(CGPoint) shootingDirection;
--(float) rotation;
 
 -(void) calculateRotation:(ccTime)delta;
 -(void) calculateMovement:(ccTime)delta;

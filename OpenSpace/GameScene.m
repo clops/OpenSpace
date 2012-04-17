@@ -7,10 +7,7 @@
 //
 
 #import "GameScene.h"
-#import "SpaceShip.h"
-#import "Bullet.h"
-#import "GameControlsLayer.h"
-
+#import "SimpleAudioEngine.h"
 
 @implementation GameScene
 
@@ -23,16 +20,20 @@
     
     //the actual gameplay layer
     GameplayLayer *gameplayLayer = [GameplayLayer node];
-    [scene addChild:gameplayLayer z:10 tag:GameSceneLayerTagGame];
+    [scene addChild:gameplayLayer z:GameSceneLayerTagGame tag:GameSceneLayerTagGame];
     
     //the input layer above it
     GameControlsLayer *gamecontrolsLayer = [GameControlsLayer node];
-    [scene addChild:gamecontrolsLayer z:100 tag:GameSceneLayerTagInput];
+    [scene addChild:gamecontrolsLayer z:GameSceneLayerTagInput tag:GameSceneLayerTagInput];
     
     //tie the two together (pass a pointer from the shop in the gameplaylayer to the controllayer)
     [gamecontrolsLayer setMainSpaceShip:[gameplayLayer mainSpaceShip]];
     [gamecontrolsLayer setMainSpaceShipBulletCache:[gameplayLayer mainSpaceShipBulletCache]];
-    
+
+    //[gameplayLayer setScale:0.4f];
+    //[gameplayLayer zoomTo:0.5f];
+    //gameplayLayer.scale = 0.5f;
+
     return scene;
 }
 
@@ -43,6 +44,10 @@
         //open the texture atlas
         CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"game-art.plist"];         
+        
+        //preload sounds
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"laser.mp3"];        
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"ufo.mp3"];        
     }
     return self;
 }
