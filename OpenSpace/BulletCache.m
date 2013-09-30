@@ -25,7 +25,7 @@
 		
         CCLOG(@"Creating 50 Bullets");
 		// Create a number of bullets up front and re-use them whenever necessary.
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 15; i++) {
 			Bullet* bullet = [Bullet bullet];
 			bullet.visible = NO;
 			[batch addChild:bullet];

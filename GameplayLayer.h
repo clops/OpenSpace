@@ -10,6 +10,7 @@
 #import "cocos2d.h"
 #import "SpaceShip.h"
 #import "BulletCache.h"
+#import "ParallaxBackground.h"
 
 @interface GameplayLayer : CCLayer {
     SpaceShip *mainSpaceShip;
@@ -18,8 +19,13 @@
     SpaceShip *enemySpaceShip;
     //BulletCache *bulletCache;
     
+    ParallaxBackground* background;
+    
     CGPoint halfScreenSize;
     CGPoint fullScreenSize;
+    float   smallestZoomLevel;
+    float   minimalZoomingDistance;
+    float   zoomScaleStep;
 }
 
 -(void) zoomTo:(float)zoom;

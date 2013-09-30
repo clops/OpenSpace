@@ -28,15 +28,15 @@
 
 -(void)initJoystickAndButtons {
     CGSize screenSize = [CCDirector sharedDirector].winSize;
-    CGRect joystickBaseDimensions = CGRectMake(0, 0, 256.0f, 256.0f);
+    CGRect joystickBaseDimensions = CGRectMake(0, 0, 200.0f, 200.0f);
     CGRect fireButtonMainDimensions = CGRectMake(0, 0, 64.0f, 64.0f);
     
     CGPoint joystickBasePosition;
     CGPoint fireButtonMainPosition;
     
     CCLOG(@"Positioning Joystick and Buttons for iPhone");
-    joystickBasePosition = ccp(screenSize.width*0.16f,
-                               screenSize.height*0.24f);
+    joystickBasePosition = ccp(screenSize.width*0.14f,
+                               screenSize.height*0.20f);
     
     fireButtonMainPosition = ccp(screenSize.width*0.93f,
                                screenSize.height*0.15f);
@@ -69,7 +69,6 @@
     [mainSpaceShip setVelocity:aJoystick.velocity setRotation:aJoystick.degrees];    
     
     if(fireButtonMain.active){
-        CCLOG(@"Attack button is pressed.");
         [mainSpaceShipBulletCache shootBulletAt:[mainSpaceShip position] velocity:[mainSpaceShip shootingDirection] rotation:[mainSpaceShip rotation] frameName:@"bullet.png"];        
     }
 }

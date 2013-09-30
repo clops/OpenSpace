@@ -30,12 +30,9 @@
     [gamecontrolsLayer setMainSpaceShip:[gameplayLayer mainSpaceShip]];
     [gamecontrolsLayer setMainSpaceShipBulletCache:[gameplayLayer mainSpaceShipBulletCache]];
 
-    //[gameplayLayer setScale:0.4f];
-    //[gameplayLayer zoomTo:0.5f];
-    //gameplayLayer.scale = 0.5f;
-
     return scene;
 }
+
 
 -(id) init {
     if ((self = [super init])) {
@@ -48,6 +45,10 @@
         //preload sounds
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"laser.mp3"];        
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"ufo.mp3"];        
+        
+        //Music and sounds
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"deadstar.mp3" loop:YES];      
+        [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.5f];
     }
     return self;
 }

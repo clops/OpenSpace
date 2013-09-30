@@ -32,7 +32,7 @@ static CGRect screenRect; //stored as a static variable for performance reasons
 
 -(id) initWithBulletImage {
 	if ((self = [super initWithSpriteFrameName:@"bullet.png"])) {
-        //CCLOG(@"Created Bullet!");
+        //CCLOG(@"Created Bullet! with scale %f");
         
 		// make sure to initialize the screen rect only once
 		if (CGRectIsEmpty(screenRect)){
@@ -71,10 +71,12 @@ static CGRect screenRect; //stored as a static variable for performance reasons
 	self.position = ccpAdd(self.position, ccpMult(velocity, delta));
 	
 	// When the bullet leaves the screen, make it invisible
+    /*
 	if (CGRectIntersectsRect([self boundingBox], screenRect) == NO){
 		self.visible = NO;
 		[self unscheduleUpdate];
 	}
+    */
 }
 
 @end
